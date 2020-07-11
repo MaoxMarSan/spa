@@ -1,0 +1,16 @@
+<h3>Buscando a: <small>{{termino}}</small></h3>
+
+<div class="alert alert-primary" *ngIf="ices.length==0" role="alert">
+    El nombre <b>{{termino}}</b> no se encuentra en nuestra lista de autores
+</div>
+<div class="card-columns animated fadeIn">
+    <div class="card text-white bg-primary mb-3" *ngFor="let ice of ices, let i=index" style="max-width: 18rem;">
+        <a [routerLink]="['/ice', i]"><img class="card-img-top img-fluid" [src]="ice.img" [alt]="ice.autor"></a>
+        <div class="card-body">
+            <h5 class="card-title">{{ice.autor}}</h5>
+            <p class="card-text">{{ice.frase}}</p>
+            <small>{{ice.aparicion}}</small>
+        </div>
+    </div>
+
+</div>

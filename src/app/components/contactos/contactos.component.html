@@ -1,0 +1,58 @@
+<h4>Formularios</h4>
+<hr>
+<form class="animated fadeIn" (ngSubmit)="guardar(f)" autocomplete="off" #f="ngForm">
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+
+                <input class="form-control" name="nombre" type="text" required placeholder="Nombre" minlength="5" [class.is-invalid]="nombre.invalid && nombre.touched" [ngModel]="usuario.nombre" #nombre="ngModel">
+                <small class="text-danger form-text animated fadeIn" *ngIf="(nombre.invalid && nombre.touched)">se requieren 5 caracteres</small>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+
+                <input class="form-control" name="apellido" type="text" required placeholder="Apellido" minlength="5" [class.is-invalid]="apellido.invalid && apellido.touched" [ngModel]="usuario.apellido" #apellido="ngModel">
+                <small class="text-danger form-text animated fadeIn" *ngIf="apellido.invalid && apellido.touched">se requieren 5 caracteres</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-8">
+
+            <input class="form-control" name="email" type="email" required placeholder="Correo electrónico" [class.is-invalid]="email.invalid && email.touched" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [ngModel]="usuario.email" #email="ngModel">
+            <small class="text-danger form-text animated fadeIn" *ngIf="email.invalid && email.touched">se requiere un correo valido</small>
+
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Paises</label>
+        <div class="col-8">
+            <select class=" form-control" required name="pais" [disabled]="paises.length === 0" [ngModel]="usuario.paises" [class.is-invalid]="select.invalid && select.touched" #select="ngModel" required>
+          <option *ngFor="let pais of paises" [value]="pais.abrev" >{{pais.name}}</option>
+        </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+        </div>
+    </div>
+
+</form>
